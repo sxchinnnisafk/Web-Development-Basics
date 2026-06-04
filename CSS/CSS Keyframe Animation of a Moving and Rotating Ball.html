@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyframe Animation Example</title>
+
+    <style>
+        .ball {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+            text-align: center;
+            align-content: center;
+
+            animation: moveBall 3s infinite;
+        }
+
+        @keyframes moveBall {
+            0% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(200px);
+            }
+
+            100% {
+                transform: translateX(200px) rotate(180deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ball">BALL</div>
+
+</body>
+</html>

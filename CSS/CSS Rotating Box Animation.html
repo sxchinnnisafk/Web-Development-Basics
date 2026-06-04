@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotating Box Animation</title>
+
+    <style>
+        .box {
+            width: 120px;
+            height: 120px;
+            background-color: dodgerblue;
+            border: 4px solid #333;
+            border-radius: 15px;
+            margin: 100px auto;
+
+            animation: rotateBox 3s linear infinite;
+        }
+
+        @keyframes rotateBox {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box"></div>
+
+</body>
+</html>
