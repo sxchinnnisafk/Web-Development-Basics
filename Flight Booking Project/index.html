@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skyline | Flight Booking</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a href="#" class="logo" onclick="app.navigateTo('home'); return false;">
+        <div class="logo-icon">✈️</div>
+        <span>skyline<span class="accent">.</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#" onclick="app.navigateTo('home'); return false;">Explore</a>
+        <a href="#" onclick="app.navigateTo('search'); return false;">My Trips</a>
+        <a href="#">Deals</a>
+      </div>
+      <div class="nav-buttons">
+        <a href="#" class="btn-signin" onclick="alert('Sign in feature coming soon'); return false;">Sign in</a>
+        <button class="btn-signup" onclick="alert('Sign up feature coming soon')">Sign up</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Home Page -->
+  <div id="home" class="page">
+    <!-- Hero Section -->
+    <section style="padding-top: 4rem;">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+          <div class="fade-up">
+            <div style="display: inline-block; background: white; border: 1px solid var(--border-color); border-radius: 9999px; padding: 0.5rem 1rem; margin-bottom: 1.5rem; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.15em;">
+              🌟 Now boarding · Spring 2026 fares
+            </div>
+            <h1>Fly somewhere <span class="text-primary italic">unforgettable</span>.</h1>
+            <p style="margin-top: 1.5rem; color: var(--text-light); max-width: 500px; font-size: 1.125rem; line-height: 1.6;">
+              Real-time fares from 500+ airlines, transparent pricing, and a checkout that actually feels good. No hidden fees. No fluff.
+            </p>
+            <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+              <button class="btn btn-secondary" onclick="app.scrollToSearch()">
+                Find flights →
+              </button>
+              <a href="#" class="btn btn-outline" onclick="alert('Check bookings feature coming soon'); return false;">
+                Check my bookings →
+              </a>
+            </div>
+          </div>
+          <div style="display: none; padding: 1rem;">
+            <img src="https://images.unsplash.com/photo-1735543550970-f7e8c2bc6fbf?crop=entropy&cs=srgb&fm=jpg&q=85" alt="Airplane" style="width: 100%; border-radius: 2rem; object-fit: cover; height: 300px;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search Form -->
+    <section style="margin-top: -3rem; position: relative; z-index: 10;">
+      <div class="container">
+        <form id="search-form" class="card" style="max-width: 100%; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.6);">
+          <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+            <button type="button" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.75rem;">One way</button>
+            <button type="button" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.75rem;">Round trip</button>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+            <div class="form-group">
+              <label>From</label>
+              <select id="from" onchange="app.bookingState.searchParams.from = this.value">
+                <option value="DEL">DEL · New Delhi</option>
+                <option value="BOM">BOM · Mumbai</option>
+                <option value="BLR">BLR · Bengaluru</option>
+                <option value="MAA">MAA · Chennai</option>
+                <option value="DXB">DXB · Dubai</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>To</label>
+              <select id="to" onchange="app.bookingState.searchParams.to = this.value">
+                <option value="DXB">DXB · Dubai</option>
+                <option value="LHR">LHR · London</option>
+                <option value="SIN">SIN · Singapore</option>
+                <option value="BKK">BKK · Bangkok</option>
+                <option value="DEL">DEL · New Delhi</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Depart</label>
+              <input type="date" id="depart" value="2026-03-20" onchange="app.bookingState.searchParams.date = this.value">
+            </div>
+
+            <div class="form-group">
+              <label>Travelers</label>
+              <select id="travelers" onchange="app.bookingState.searchParams.travelers = this.value">
+                <option value="1">1 Traveler</option>
+                <option value="2">2 Travelers</option>
+                <option value="3">3 Travelers</option>
+                <option value="4">4 Travelers</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Class</label>
+              <select id="cabin" onchange="app.bookingState.searchParams.cabin = this.value">
+                <option value="Economy">Economy</option>
+                <option value="Business">Business</option>
+                <option value="First">First</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-primary" style="width: 100%; margin-top: 1rem; padding: 1rem;" onclick="app.navigateTo('search')">
+            Search flights
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section>
+      <div class="container">
+        <div class="grid grid-3">
+          <div class="card" style="border: none; box-shadow: none;">
+            <div style="width: 3rem; height: 3rem; border-radius: 1rem; background: var(--light-bg); display: flex; align-items: center; justify-content: center; color: var(--primary-blue); font-size: 1.5rem; margin-bottom: 1rem;">🛡️</div>
+            <h3>Transparent checkout</h3>
+            <p style="color: var(--text-light);">Zero hidden fees. The price you see is the price you pay. Full stop.</p>
+          </div>
+
+          <div class="card" style="border: none; box-shadow: none;">
+            <div style="width: 3rem; height: 3rem; border-radius: 1rem; background: var(--light-bg); display: flex; align-items: center; justify-content: center; color: var(--primary-blue); font-size: 1.5rem; margin-bottom: 1rem;">⚡</div>
+            <h3>Lightning fast</h3>
+            <p style="color: var(--text-light);">Real-time fares updated every second. Book before prices change.</p>
+          </div>
+
+          <div class="card" style="border: none; box-shadow: none;">
+            <div style="width: 3rem; height: 3rem; border-radius: 1rem; background: var(--light-bg); display: flex; align-items: center; justify-content: center; color: var(--primary-blue); font-size: 1.5rem; margin-bottom: 1rem;">🎧</div>
+            <h3>24/7 human support</h3>
+            <p style="color: var(--text-light);">Real humans, real answers. No bots, no scripts, just travel mates.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Search Results Page -->
+  <div id="search" class="page hidden">
+    <section style="padding-top: 2rem;">
+      <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+          <div>
+            <span style="font-weight: bold;">DEL</span>
+            <span style="color: #999; margin: 0 1rem;">→</span>
+            <span style="font-weight: bold;">DXB</span>
+            <span style="color: #666; margin-left: 1rem;">2026-03-20 · 1 traveler · Economy</span>
+          </div>
+          <button class="btn btn-outline" onclick="app.navigateTo('home')">← Back</button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 250px 1fr; gap: 2rem;">
+          <!-- Filters -->
+          <aside>
+            <div class="card">
+              <h3>Sort by</h3>
+              <div style="margin-top: 1rem;">
+                <label style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; cursor: pointer;">
+                  <input type="radio" name="sort" value="price" checked onchange="document.getElementById('flights-list').dataset.sort = this.value; renderFlights();">
+                  <span>Cheapest</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; cursor: pointer;">
+                  <input type="radio" name="sort" value="duration" onchange="document.getElementById('flights-list').dataset.sort = this.value; renderFlights();">
+                  <span>Fastest</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                  <input type="radio" name="sort" value="departure" onchange="document.getElementById('flights-list').dataset.sort = this.value; renderFlights();">
+                  <span>Earliest</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="card" style="margin-top: 1.5rem;">
+              <h3>Stops</h3>
+              <div style="margin-top: 1rem;">
+                <label style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; cursor: pointer;">
+                  <input type="radio" name="stops" value="0" onchange="document.getElementById('flights-list').dataset.stops = this.value; renderFlights();">
+                  <span>Non-stop only</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; cursor: pointer;">
+                  <input type="radio" name="stops" value="1" onchange="document.getElementById('flights-list').dataset.stops = this.value; renderFlights();">
+                  <span>Up to 1 stop</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                  <input type="radio" name="stops" value="2" checked onchange="document.getElementById('flights-list').dataset.stops = this.value; renderFlights();">
+                  <span>Any</span>
+                </label>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Flights List -->
+          <main>
+            <p style="color: var(--text-light); margin-bottom: 1rem;">4 flights found</p>
+            <div id="flights-list" data-sort="price" data-stops="2"></div>
+          </main>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Seat Selection Page -->
+  <div id="seats" class="page hidden">
+    <section>
+      <div class="container">
+        <button class="btn btn-outline" onclick="app.navigateTo('search')" style="margin-bottom: 2rem;">← Back</button>
+        
+        <div style="display: grid; grid-template-columns: 1fr 300px; gap: 2rem;">
+          <div>
+            <h1>Select your <span class="text-primary">seats</span></h1>
+            <p style="color: var(--text-light); margin-bottom: 2rem;">Choose your preferred seats. You can select up to 4 seats.</p>
+
+            <div class="card">
+              <div style="display: flex; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                  <div style="width: 1.5rem; height: 1.5rem; background: #E5E7EB; border: 1px solid #999; border-radius: 0.25rem;"></div>
+                  <span>Available</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                  <div style="width: 1.5rem; height: 1.5rem; background: var(--primary-blue); border-radius: 0.25rem;"></div>
+                  <span>Selected</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                  <div style="width: 1.5rem; height: 1.5rem; background: #999; border-radius: 0.25rem;"></div>
+                  <span>Occupied</span>
+                </div>
+              </div>
+
+              <div id="seat-map" style="display: inline-block; overflow-x: auto;"></div>
+            </div>
+          </div>
+
+          <div class="card" style="height: fit-content;">
+            <h3>Booking Summary</h3>
+            <div style="margin-top: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+              <p style="font-size: 0.875rem; color: var(--text-light); margin-bottom: 0.5rem;">Selected Seats</p>
+              <div id="selected-seats-list" style="min-height: 2rem;">
+                <p style="color: var(--text-light); font-size: 0.875rem;">No seats selected yet</p>
+              </div>
+            </div>
+
+            <div style="margin-top: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                <span style="color: var(--text-light);">Base Price</span>
+                <span style="font-weight: bold;">₹3,900</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 1.125rem;">
+                <span>Total</span>
+                <span class="text-primary" id="total-price">₹3,900</span>
+              </div>
+            </div>
+
+            <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="app.navigateTo('passengers')">
+              Continue to Passengers
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Passenger Details Page -->
+  <div id="passengers" class="page hidden">
+    <section>
+      <div class="container">
+        <button class="btn btn-outline" onclick="app.navigateTo('seats')" style="margin-bottom: 2rem;">← Back</button>
+
+        <div style="display: grid; grid-template-columns: 1fr 300px; gap: 2rem;">
+          <div>
+            <h1>Passenger <span class="text-primary">Details</span></h1>
+            <p style="color: var(--text-light); margin-bottom: 2rem;">Please provide accurate information for all passengers.</p>
+
+            <form id="passenger-form" class="card">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label>First Name</label>
+                  <input type="text" placeholder="John" required>
+                </div>
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <input type="text" placeholder="Doe" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" placeholder="john@example.com" required>
+              </div>
+
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" placeholder="+1 (555) 000-0000" required>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label>Date of Birth</label>
+                  <input type="date" required>
+                </div>
+                <div class="form-group">
+                  <label>Nationality</label>
+                  <select required>
+                    <option value="">Select Nationality</option>
+                    <option value="Indian">Indian</option>
+                    <option value="American">American</option>
+                    <option value="British">British</option>
+                    <option value="Canadian">Canadian</option>
+                    <option value="Australian">Australian</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Passport Number</label>
+                <input type="text" placeholder="A12345678" required>
+              </div>
+            </form>
+          </div>
+
+          <div class="card" style="height: fit-content;">
+            <h3>Booking Summary</h3>
+            <div style="margin-top: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+              <p style="font-size: 0.875rem; color: var(--text-light); margin-bottom: 0.5rem;">Flight Details</p>
+              <div style="font-size: 0.875rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                  <span style="color: var(--text-light);">Route</span>
+                  <span style="font-weight: bold;">DEL → DXB</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                  <span style="color: var(--text-light);">Date</span>
+                  <span style="font-weight: bold;">Mar 20, 2026</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: var(--text-light);">Airline</span>
+                  <span style="font-weight: bold;">Air France</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                <span style="color: var(--text-light);">Base Price</span>
+                <span style="font-weight: bold;">₹3,900</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 1.125rem;">
+                <span>Total</span>
+                <span class="text-primary">₹3,900</span>
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="app.navigateTo('payment')">
+              Continue to Payment
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Payment Page -->
+  <div id="payment" class="page hidden">
+    <section>
+      <div class="container">
+        <button class="btn btn-outline" onclick="app.navigateTo('passengers')" style="margin-bottom: 2rem;">← Back</button>
+
+        <div style="display: grid; grid-template-columns: 1fr 300px; gap: 2rem;">
+          <div>
+            <h1>Secure <span class="text-primary">Payment</span></h1>
+            <p style="color: var(--text-light); margin-bottom: 2rem;">Your payment information is encrypted and secure.</p>
+
+            <div class="alert alert-success">
+              <span>🔒 256-bit SSL Encrypted - Your payment details are protected with industry-leading encryption.</span>
+            </div>
+
+            <form id="payment-form" class="card">
+              <h3>Card Details</h3>
+              <div class="form-group">
+                <label>Cardholder Name</label>
+                <input type="text" placeholder="John Doe" required>
+              </div>
+
+              <div class="form-group">
+                <label>Card Number</label>
+                <input type="text" placeholder="4532 1234 5678 9010" maxlength="19" required oninput="this.value = app.formatCardNumber(this.value)">
+                <p style="font-size: 0.75rem; color: var(--text-light); margin-top: 0.5rem;">Test card: 4532 1234 5678 9010</p>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label>Expiry Date</label>
+                  <input type="text" placeholder="MM/YY" maxlength="5" required oninput="this.value = app.formatExpiryDate(this.value)">
+                </div>
+                <div class="form-group">
+                  <label>CVV</label>
+                  <input type="text" placeholder="123" maxlength="3" required oninput="this.value = this.value.replace(/\D/g, '')">
+                </div>
+              </div>
+
+              <h3 style="margin-top: 2rem;">Billing Address</h3>
+              <div class="form-group">
+                <label>Street Address</label>
+                <input type="text" placeholder="123 Main Street" required>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label>City</label>
+                  <input type="text" placeholder="New Delhi" required>
+                </div>
+                <div class="form-group">
+                  <label>Postal Code</label>
+                  <input type="text" placeholder="110001" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Country</label>
+                <select required>
+                  <option value="India">India</option>
+                  <option value="United States">United States</option>
+                  <option value="United Kingdom">United Kingdom</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Australia">Australia</option>
+                </select>
+              </div>
+
+              <div class="alert alert-info" style="margin-top: 1.5rem;">
+                <span>By completing this purchase, you agree to our Terms & Conditions and Privacy Policy.</span>
+              </div>
+
+              <button type="button" class="btn btn-primary" style="width: 100%; margin-top: 1rem; padding: 1rem;" onclick="app.navigateTo('confirmation')">
+                🔒 Complete Payment
+              </button>
+            </form>
+          </div>
+
+          <div class="card" style="height: fit-content;">
+            <h3>Order Summary</h3>
+            <div style="margin-top: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+              <p style="font-size: 0.875rem; color: var(--text-light); margin-bottom: 0.5rem;">Flight Details</p>
+              <div style="font-size: 0.875rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                  <span style="color: var(--text-light);">Route</span>
+                  <span style="font-weight: bold;">DEL → DXB</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                  <span style="color: var(--text-light);">Date</span>
+                  <span style="font-weight: bold;">Mar 20, 2026</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: var(--text-light);">Airline</span>
+                  <span style="font-weight: bold;">Air France</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+              <div style="font-size: 0.875rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                  <span style="color: var(--text-light);">Base Fare</span>
+                  <span style="font-weight: bold;">₹7,800</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                  <span style="color: var(--text-light);">Taxes & Fees</span>
+                  <span style="font-weight: bold;">₹1,560</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: 1rem;">
+              <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 1.125rem;">
+                <span>Total Amount</span>
+                <span class="text-primary">₹9,960</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Confirmation Page -->
+  <div id="confirmation" class="page hidden">
+    <section style="padding-top: 4rem;">
+      <div class="container" style="max-width: 600px;">
+        <div class="card" style="text-align: center;">
+          <div style="font-size: 4rem; margin-bottom: 1rem;">✅</div>
+          <h1>Booking <span class="text-primary">Confirmed!</span></h1>
+          <p style="color: var(--text-light); margin-bottom: 2rem;">Your flight has been successfully booked. A confirmation email has been sent to john@example.com</p>
+
+          <div class="card" style="background: linear-gradient(135deg, rgba(36, 0, 255, 0.05), rgba(255, 69, 0, 0.05)); border: 1px solid rgba(36, 0, 255, 0.2); margin-bottom: 2rem;">
+            <p style="font-size: 0.75rem; color: var(--text-light); text-transform: uppercase; font-weight: bold; margin-bottom: 0.5rem;">Booking Reference</p>
+            <p id="booking-ref" style="font-size: 2rem; font-weight: bold; color: var(--primary-blue); font-family: monospace;">SL-ABC123</p>
+            <p style="font-size: 0.75rem; color: var(--text-light); margin-top: 0.5rem;">Save this reference for your records and check-in</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
+            <div class="card" style="border: none; background: var(--light-bg);">
+              <p style="font-size: 0.75rem; color: var(--text-light); text-transform: uppercase; font-weight: bold; margin-bottom: 1rem;">Flight Details</p>
+              <div style="text-align: left; font-size: 0.875rem;">
+                <div style="margin-bottom: 0.5rem;"><span style="color: var(--text-light);">Route:</span> <strong>DEL → DXB</strong></div>
+                <div style="margin-bottom: 0.5rem;"><span style="color: var(--text-light);">Date:</span> <strong>Mar 20, 2026</strong></div>
+                <div><span style="color: var(--text-light);">Airline:</span> <strong>Air France</strong></div>
+              </div>
+            </div>
+
+            <div class="card" style="border: none; background: var(--light-bg);">
+              <p style="font-size: 0.75rem; color: var(--text-light); text-transform: uppercase; font-weight: bold; margin-bottom: 1rem;">Passengers</p>
+              <div style="text-align: left; font-size: 0.875rem;">
+                <div style="margin-bottom: 0.5rem;"><strong>John Doe</strong></div>
+                <div style="color: var(--text-light);">Seat 2A</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="border: none; background: var(--light-bg); text-align: left; margin-bottom: 2rem;">
+            <p style="font-size: 0.75rem; color: var(--text-light); text-transform: uppercase; font-weight: bold; margin-bottom: 1rem;">Price Summary</p>
+            <div style="font-size: 0.875rem;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                <span>Base Fare (1 pax)</span>
+                <strong>₹3,900</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                <span>Taxes & Fees</span>
+                <strong>₹780</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 0.5rem; font-weight: bold;">
+                <span>Total Paid</span>
+                <span class="text-primary">₹4,680</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert alert-success">
+            <span>✉️ Confirmation email sent - Check your email for your booking confirmation and e-ticket.</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;">
+            <button class="btn btn-secondary" onclick="app.navigateTo('home')">Book Another Flight</button>
+            <button class="btn btn-primary" onclick="app.navigateTo('home')">Go to Home</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p style="color: var(--text-light);">© 2026 Skyline. Crafted for the explorers.</p>
+      <div style="display: flex; gap: 2rem;">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script src="search.js"></script>
+  <script src="seats.js"></script>
+</body>
+</html>

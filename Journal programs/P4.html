@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Multiple Animations</title>
+<style>
+.container{
+ display: flex;
+ gap: 20px;
+}
+/* Common box style */
+.box{
+ width: 100px;
+ height: 100px;
+ margin: 20px auto;
+ position: relative;
+ color: white;
+ line-height: 100px;
+ font-weight: bold;
+ border-radius: 5px ;
+ text-align: center;
+}
+/* Box 1: Movement */
+.box1{
+ background-color: red;
+ animation-name: move ;
+ animation-duration:3s ;
+ animation-iteration-count: infinite;
+}
+@keyframes move{
+ 0% {left:0px; }
+ 15% {left:30px}
+ 100% {left: 60px; }
+}
+/* Box 2: Color Change */
+.box2{
+ background-color: blue;
+ /*shorthand property of animation */
+ animation: colorChange 3s infinite;
+}
+@keyframes colorChange{
+ 0% { background-color: blue; }
+ 50% { background-color: yellow; }
+ 100% { background-color: green; }
+}
+/* Box 3: Scaling */
+.box3{
+ background-color: green;
+ animation: scaleBox 2s infinite alternate;
+}
+@keyframes scaleBox{
+ 0% { transform: scale(1); }
+ 100% { transform: scale(1.5); }
+}
+/* Box 4: Rotation */
+.box4{
+ background-color: purple;
+ animation: rotateBox 2s infinite linear;
+}
+@keyframes rotateBox{
+ 0% { transform: rotate(0deg); }
+ 100% { transform: rotate(360deg); }
+}
+/* box5: skew */
+.box5{
+ background-color: rgb(247, 161, 2);
+ animation: skew 2s infinite;
+}
+@keyframes skew{
+ 0%{
+ transform: skew(20deg);
+ }
+ 100%{
+ transform: skew(-20deg);
+ }
+}
+</style>
+</head>
+<body>
+<h2>CSS Animation - Multiple Effects</h2>
+<div class="container">
+<div class="box box1">Move</div>
+<div class="box box2">Color</div>
+<div class="box box3">Scale</div>
+<div class="box box4">Rotate</div>
+<div class="box box5">Skew</div>
+</div>
+</body>
+</html>

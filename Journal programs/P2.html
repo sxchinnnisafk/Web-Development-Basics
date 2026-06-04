@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body style="background-color: lightgray;
+text-align:center;">
+<h1>Canvas and Drag Drop</h1>
+<div style="display:flex;
+justify-content:center;
+gap:20px;">
+
+ <div>
+ <h2>Canvas</h2>
+ <canvas id="myCanvas"
+ width="350" height="120"
+ style="border:1px solid black;"></canvas>
+ </div>
+
+ <div>
+ <h2>Drag & Drop</h2>
+ <div id="box"
+ ondrop="drop(event)"
+ ondragover="allowDrop(event)"
+ style="width:400px;height:90px;border:2px solid black;">
+ </div>
+ <br>
+ <img id="img"
+ src="KLE Tech Logo.png"
+ width="400px" height="90px"
+ draggable="true"
+ ondragstart="drag(event)">
+ </div>
+</div>
+<script>
+let canvas = document.getElementById("myCanvas");
+let ctx = canvas.getContext("2d");
+ctx.fillStyle = "blue";
+ctx.fillRect(20, 30, 100, 50);
+function allowDrop(ev) {
+ ev.preventDefault();
+}
+function drag(ev) {
+ ev.dataTransfer.setData("img", ev.target.id);
+}
+function drop(ev) {
+ ev.preventDefault();
+ let data = ev.dataTransfer.getData("img");
+ ev.target.appendChild(document.getElementById(data));
+}
+</script>
+</body>
+</html>

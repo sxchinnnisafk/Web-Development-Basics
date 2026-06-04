@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <style>
+        body {
+            background-color: lightgrey;
+            font-family: sans-serif;
+        }
+
+        form {
+            padding: 20px;
+            width: 350px;
+            border-radius: 8px;
+        }
+
+        img {
+            margin-bottom: 15px;
+            border: 1px solid black;
+            object-fit: cover;
+        }
+
+        meter {
+            width: 80%;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="width: 350px; background-color: white; margin: 50px auto; border: 2px solid black;">
+        <form>
+            <h2>Student Profile</h2>
+            
+            <img src="C:\Users\sachi\OneDrive\Pictures\WhatsApp Image 2026-04-24 at 11.37.45 AM.jpeg" alt="Profile Picture" width="50px" height="50px">
+            
+            <br>
+            
+            <label for="fullname">Full Name:</label><br>
+            <input type="text" name="fullname"><br><br>
+
+            <label for="password">Password:</label><br>
+            <input type="password" name="password"><br><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" name="email"><br><br>
+
+            <label for="dob">Date Of Birth:</label><br>
+            <input type="date" name="dob"><br><br>
+
+            <label>Gender:</label><br>
+            <input type="radio" name="gender"> Male
+            <input type="radio" name="gender"> Female
+            <br><br>
+
+            <input type="checkbox">I agree to the terms and conditions<br>
+            <br><br>
+
+            <label>Course:</label><br>
+            <select>
+                <option value="BCA">BCA</option>
+                <option value="MCA">MCA</option>
+                <option value="MBA">MBA</option>
+            </select><br><br>
+
+            <input type="submit" value="Submit">
+            <br><br>
+
+            <label>Profile Completion:</label>
+            <br>
+            <meter value="70" max="100" style="width: 150px; height: 30px;"></meter>
+            <br>
+            <span>70% Completed</span>
+            
+        </form>
+    </div>
+
+</body>
+</html>

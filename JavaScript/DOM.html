@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model Example</title>
+</head>
+<body>
+    <input type="text" id="myInput" placeholder="Enter Your Name">
+    <button onclick="display()">Click!</button>
+    <h1 id="Message"></h1>
+
+    <script>
+    function display() {
+        let name = document.getElementById("myInput").value;
+        document.getElementById("Message").innerHTML = "Welcome To JavaScript " + name;
+    }
+    </script>
+</body>
+</html>

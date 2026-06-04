@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown | Precise Discount Engine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=IBM+Plex+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        
+    @layer base {
+        body { @apply bg-[#F5F2ED] text-[#1A1A1A] font-sans; }
+        .font-serif { font-family: 'Cormorant Garamond', serif; }
+        .font-mono { font-family: 'IBM Plex Mono', monospace; }
+    }
+    .label-eyebrow { @apply text-[10px] uppercase tracking-[0.2em] text-[#666666] font-medium; }
+    .bg-forest { background-color: #2D4A3E; }
+    .text-forest { color: #2D4A3E; }
+    .border-forest { border-color: #2D4A3E; }
+
+    </style>
+</head>
+
+<body class="bg-[#F5F2ED] text-[#1A1A1A]">
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2">
+                <span class="bg-[#2D4A3E] text-white p-1.5 rounded">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                    </svg>
+                </span>
+                <span class="font-serif text-xl font-bold">Markdown<span class="text-orange-700">.</span></span>
+            </a>
+            <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-600">
+                <a href="#calculator" class="hover:text-black transition">Calculator</a>
+                <a href="#how-it-works" class="hover:text-black transition">How it works</a>
+                <a href="#about" class="hover:text-black transition">About</a>
+                <a href="#faq" class="hover:text-black transition">FAQ</a>
+            </nav>
+            <a href="#calculator" class="bg-[#2D4A3E] text-white px-5 py-2 text-sm font-medium hover:bg-opacity-90 transition">Open calculator</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="py-20 lg:py-32 px-6 max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-8">
+                <div class="label-eyebrow mb-6 flex items-center gap-3">
+                    <span class="h-px w-8 bg-gray-400"></span> A precise discount engine — est. 2026
+                </div>
+                <h1 class="font-serif text-5xl lg:text-7xl leading-tight mb-8">
+                    Know the real price.<br><span class="italic text-[#2D4A3E]">Before</span> you pay it.
+                </h1>
+                <p class="text-lg text-gray-600 max-w-xl mb-10">
+                    Markdown is a quiet, trustworthy calculator for shoppers, finance teams and procurement leads. Stack discounts, apply tax, multiply by quantity — see the honest number, every time.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#calculator" class="bg-[#2D4A3E] text-white px-8 py-4 flex items-center gap-2 hover:bg-opacity-90 transition">
+                        Calculate a discount <span>&rarr;</span>
+                    </a>
+                    <a href="#how-it-works" class="border border-[#2D4A3E] text-[#2D4A3E] px-8 py-4 hover:bg-[#2D4A3E] hover:text-white transition">
+                        How it works
+                    </a>
+                </div>
+            </div>
+            <aside class="lg:col-span-4 bg-white border border-gray-200 p-8 shadow-sm">
+                <div class="label-eyebrow mb-4">No spreadsheets required</div>
+                <p class="font-serif text-2xl leading-snug mb-6">
+                    “Finance teams use Markdown to verify supplier discount waterfalls in under 20 seconds.”
+                </p>
+                <div class="pt-6 border-t border-gray-100 flex items-center gap-3 text-sm text-gray-500">
+                    <svg class="w-4 h-4 text-[#2D4A3E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Privacy-first. Math runs in your browser.
+                </div>
+            </aside>
+        </section>
+
+        <!-- Calculator Section -->
+        <section id="calculator" class="py-20 bg-white border-y border-gray-200">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="text-center mb-12">
+                    <div class="label-eyebrow mb-2">The Tool</div>
+                    <h2 class="font-serif text-4xl mb-4">A discount calculator, designed to be trusted.</h2>
+                </div>
+                
+                <div class="bg-[#F5F2ED] p-8 rounded-lg shadow-inner">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="block text-xs font-bold uppercase mb-2">Original Price</label>
+                            <input type="number" id="basic-price" value="199.00" class="w-full p-4 border border-gray-300 focus:outline-none focus:border-[#2D4A3E]">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase mb-2">Discount (%)</label>
+                            <input type="number" id="basic-discount" value="25" class="w-full p-4 border border-gray-300 focus:outline-none focus:border-[#2D4A3E]">
+                        </div>
+                    </div>
+                    <div class="mt-8 p-6 bg-[#2D4A3E] text-white rounded">
+                        <div class="text-sm uppercase tracking-widest opacity-80 mb-1">You Pay</div>
+                        <div class="text-5xl font-serif font-bold" id="final-price">$149.25</div>
+                        <div class="mt-4 text-sm opacity-90">You save: <span id="savings-amount">$49.75</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 px-6 max-w-7xl mx-auto border-t border-gray-200 text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="flex items-center gap-2">
+            <span class="font-serif text-lg font-bold text-black">Markdown.</span>
+            <span>&copy; 2026</span>
+        </div>
+        <div class="flex gap-8">
+            <a href="#" class="hover:text-black">Privacy</a>
+            <a href="#" class="hover:text-black">Terms</a>
+            <a href="#" class="hover:text-black">Contact</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

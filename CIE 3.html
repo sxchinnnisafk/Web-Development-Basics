@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animations</title>
+</head>
+<body>
+    <style>
+    .movingbox {
+    width: 100px;
+    height: 100px;
+    background: red;
+    position: relative;
+    animation: simpleMove 4s infinite linear;
+  }
+
+  @keyframes simpleMove {
+    0%   { left: 0px;   background: red; }    /* Start */
+    25%  { left: 100px; background: yellow; } /* 1/4th way */
+    50%  { left: 200px; background: blue; }   /* Middle */
+    75%  { left: 100px; background: yellow; }
+    100% { left: 0px;   background: red; }
+  }
+    </style>
+
+<div class="movingbox"></div>
+    </style>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model Example</title>
+    <style>
+        #login {
+            width: 200px;
+            height: 110px;
+            background-color: powderblue;
+            margin: auto;
+            padding-left: 25px;
+            border: 1px solid black;
+            box-shadow: 7px 7px 5px black;
+        }
+        #bt {
+            margin-top: 2px;
+            margin-left: 55px;
+            background-color: red;
+            cursor: pointer;
+        }
+        input
+        {
+            border: 1px solid rgb(175, 30, 98);
+            border-radius: 5px;
+            background-color: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+<body>
+    <div id="login">
+        <form>
+            <label for="name">Username:</label><br>
+            <input type="text"><br>
+            <label for="password">Password:</label><br>
+            <input type="password"><br>
+            <input id="bt" type="button" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

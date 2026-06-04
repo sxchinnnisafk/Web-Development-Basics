@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information</title>
+    <style>
+        h1
+        .container {
+            background-color: white;
+            border: 1px solid black;
+            padding: 20px 30px;
+            width: 320px;
+        }
+
+        h2 {
+            color: powderblue; 
+            font-size: 20px;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: lightpink; 
+            font-size: 16px;
+            margin-bottom: 8px;
+            margin-top: 15px;
+        }
+
+        p, li, label {
+            font-size: 14px;
+            color: grey;
+            margin: 5px 0;
+        }
+
+        ul {
+            margin-top: 0;
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 8px;
+        }
+
+        .form-group label {
+            display: block;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"] {
+            width: 80%;
+            padding: 3px;
+            border: 1px solid lightgrey;
+        }
+
+        .gender-group {
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            background-color: white;
+            border: 1px solid lightgreen;
+            padding: 2px 10px;
+            cursor: pointer;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2><span style="color: darkblue;">Student Information</span></h2>
+        <p>Name: <span style="color: lightgreen;">Rahul</span></p>
+        <p>Education: BCA</p>
+
+        <h3><span style="color: purple;">Hobbies</span></h3>
+        <ul>
+            <li>Reading</li>
+            <li>Playing Cricket</li>
+            <li>Listening to Music</li>
+        </ul>
+
+        <h3><span style="color: purple;">Contact Form</span></h3>
+        <form>
+            <div class="form-group">
+                <label>Name:</label>
+                <input type="text" name="name">
+            </div>
+            
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" name="email">
+            </div>
+            
+            <div class="gender-group">
+                <label>Gender:</label><br>
+                <input type="radio" id="male" name="gender" value="Male">
+                <label for="male">Male</label>
+                
+                <input type="radio" id="female" name="gender" value="Female">
+                <label for="female">Female</label>
+            </div>
+            
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+</body>
+</html>

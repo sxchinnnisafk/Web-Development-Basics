@@ -1,0 +1,27 @@
+</head>
+<body>
+    <img src="KLE Tech Logo.png" 
+    alt="kletech logo" id="img" 
+    draggable="true" 
+    ondragstart="drag(event)">
+
+    <div id="dropbox" 
+    ondragover="allowDrop(event)" 
+    ondrop="drop(event)">Drop Here</div>
+
+    <script>
+        function drag(ev){
+            ev.dataTransfer.setData("img",ev.target.id);
+        }
+
+        function allowDrop(ev){
+            ev.preventDefault();
+        }
+
+        function drop(ev){
+            ev.preventDefault();
+            let data = ev.dataTransfer.getData("img");
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+</body>
